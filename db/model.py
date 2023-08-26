@@ -44,6 +44,7 @@ class Farm(CreatedModel):
 class Dayuser(CreatedModel):
     __tablename__ = 'dayusers'
     chat_id: Mapped[str] = mapped_column(String(30), primary_key=True)
+    created_at: Mapped[str] = mapped_column(DateTime(), default=datetime.datetime.now)
 
 
 class Credits(CreatedModel):
