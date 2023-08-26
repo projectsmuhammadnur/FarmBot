@@ -1,0 +1,15 @@
+{
+    "current": "\u20bd",
+    "referal_%": 10,
+    "sub_egg": 300,
+    "min_sub_egg": 300,
+    "exchange_%": 10,
+    "bot_username": "AcFarmBot",
+    "contact": "https://t.me/TheMuhammadNur",
+    "payment_channel": "https://t.me/test3_bot3",
+    "credit_%": 7,
+    "grain_price": 2,
+    "mutation_price": 10,
+    "vitamin_price": 15,
+    "min_take": 10
+}
