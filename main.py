@@ -310,7 +310,7 @@ AND farm.grain >= 1
         "d2_time": datetime.datetime.now() + datetime.timedelta(hours=60),
         "grain_time": datetime.datetime.now() + datetime.timedelta(hours=1),
         "time": datetime.datetime.now() + datetime.timedelta(days=2),
-        "date": datetime.datetime.now() + datetime.timedelta(days=1),
+        "date": datetime.datetime.now() + datetime.timedelta(days=1)
     }
     await db.execute(mutation_delete, vitamin_param)
     await db.commit()
