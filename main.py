@@ -343,7 +343,7 @@ AND farm.grain >= 1
 if __name__ == '__main__':
     dp.middleware.setup(ThrottlingMiddleware())
     dp.middleware.setup(BigBrother())
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.ERROR)
     loop = asyncio.get_event_loop()
     loop.run_until_complete(create_all())
     scheduler.start()
