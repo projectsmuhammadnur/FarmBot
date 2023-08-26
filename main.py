@@ -61,7 +61,7 @@ class BigBrother(BaseMiddleware):
 scheduler = AsyncIOScheduler()
 
 
-@scheduler.scheduled_job("interval", hours=10)
+@scheduler.scheduled_job("interval", seconds=10)
 async def auto():
     mutation_delete = text("""
 DELETE FROM birds
