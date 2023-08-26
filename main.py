@@ -68,12 +68,14 @@ DELETE FROM birds
 WHERE birds.mutation < :current_time;
     """)
     birds_coop_delete = text("""
-    DELETE FROM birds FROM farm
-    WHERE birds.chat_id == farm.chat_id AND farm.coop < :d2_time;
+DELETE FROM birds
+USING farm
+WHERE birds.chat_id = farm.chat_id AND farm.coop < :d2_time;
+
         """)
     birds_delete = text("""
-    DELETE FROM birds;
-    WHERE grain < :time
+DELETE FROM birds 
+WHERE grain < :time
         """)
     vitamin_1 = text("""
 UPDATE eggs
