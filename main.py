@@ -61,7 +61,7 @@ class BigBrother(BaseMiddleware):
 scheduler = AsyncIOScheduler()
 
 
-@scheduler.scheduled_job("interval", seconds=10)
+@scheduler.scheduled_job("interval", hours=10)
 async def auto():
     mutation_delete = text("""
 DELETE FROM birds
@@ -277,12 +277,14 @@ AND farm.grain >= 1
 AND farm.grain = farm.grain - 0.05;
     """)
     grain_4 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 0.1 FROM farm
-    WHERE birds.type = 4
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 4
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.1;
     """)
     grain_5 = text("""
 UPDATE birds
@@ -292,7 +294,7 @@ WHERE birds.type = 5
 AND farm.chat_id = birds.chat_id
 AND birds.grain > :grain_time
 AND farm.grain >= 1
-AND farm.grain = farm.grain - 0.1;
+AND farm.grain = farm.grain - 0.25;
     """)
     grain_6 = text("""
 UPDATE birds
@@ -302,7 +304,7 @@ WHERE birds.type = 6
 AND farm.chat_id = birds.chat_id
 AND birds.grain > :grain_time
 AND farm.grain >= 1
-AND farm.grain = farm.grain - 0.25;
+AND farm.grain = farm.grain - 0.5;
     """)
     grain_7 = text("""
 UPDATE birds
