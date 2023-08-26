@@ -247,11 +247,14 @@ AND birds.vitamin < :current_time;
     """)
     grain_1 = text("""
 UPDATE birds
-SET birds.grain = :current_time AND farm.grain - 0.01 FROM farm
+SET grain = :current_time
+FROM farm
 WHERE birds.type = 1
 AND farm.chat_id = birds.chat_id
-AND grain > :grain_time
+AND birds.grain > :grain_time
 AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.01;
+
 """)
     grain_2 = text("""
     UPDATE birds
