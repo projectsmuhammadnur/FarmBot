@@ -25,8 +25,8 @@ class Farm(CreatedModel):
     __tablename__ = "farm"
     id: Mapped[int] = mapped_column(primary_key=True)
     chat_id: Mapped[str] = mapped_column(String(30))
-    coop: Mapped[str] = mapped_column(DateTime, default=datetime.datetime.now)
-    grain: Mapped[Float] = mapped_column(Float, default=0)
+    coop: Mapped[str] = mapped_column(DateTime(), default=datetime.datetime.now)
+    grain: Mapped[float] = mapped_column(Float, default=0)
     bird1: Mapped[int] = mapped_column(Integer, default=0)
     bird2: Mapped[int] = mapped_column(Integer, default=0)
     bird3: Mapped[int] = mapped_column(Integer, default=0)
@@ -68,9 +68,9 @@ class Birds(CreatedModel):
     id: Mapped[int] = mapped_column(primary_key=True)
     chat_id: Mapped[str] = mapped_column(String(30))
     type: Mapped[int] = mapped_column(Integer)
-    grain: Mapped[str] = mapped_column(DateTime, default=datetime.datetime.now)
-    vitamin: Mapped[str] = mapped_column(DateTime)
-    mutation: Mapped[str] = mapped_column(DateTime, nullable=True)
+    grain: Mapped[str] = mapped_column(DateTime(), default=datetime.datetime.now)
+    vitamin: Mapped[str] = mapped_column(DateTime())
+    mutation: Mapped[str] = mapped_column(DateTime(), nullable=True)
 
 
 class Ban(CreatedModel):
