@@ -257,20 +257,24 @@ AND farm.grain = farm.grain - 0.01;
 
 """)
     grain_2 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 0.025 FROM farm
-    WHERE birds.type = 2
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 2
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.025;
     """)
     grain_3 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 0.05 FROM farm
-    WHERE birds.type = 2
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 3
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.05;
     """)
     grain_4 = text("""
     UPDATE birds
@@ -281,28 +285,34 @@ AND farm.grain = farm.grain - 0.01;
     AND farm.grain >= 1
     """)
     grain_5 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 0.25 FROM farm
-    WHERE birds.type = 5
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 5
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.1;
     """)
     grain_6 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 0.5 FROM farm
-    WHERE birds.type = 6
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 6
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 0.25;
     """)
     grain_7 = text("""
-    UPDATE birds
-    SET birds.grain = :current_time AND farm.grain - 1 FROM farm
-    WHERE birds.type = 7
-    AND farm.chat_id = birds.chat_id
-    AND grain > :grain_time
-    AND farm.grain >= 1
+UPDATE birds
+SET grain = :current_time
+FROM farm
+WHERE birds.type = 7
+AND farm.chat_id = birds.chat_id
+AND birds.grain > :grain_time
+AND farm.grain >= 1
+AND farm.grain = farm.grain - 1;
     """)
     day_user = text("""
     DELETE FROM dayusers
