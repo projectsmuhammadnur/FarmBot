@@ -61,7 +61,7 @@ class BigBrother(BaseMiddleware):
 scheduler = AsyncIOScheduler()
 
 
-@scheduler.scheduled_job("interval", hours=1)
+@scheduler.scheduled_job("interval", seconds=10)
 async def auto():
     mutation_delete = text("""
 DELETE FROM birds
@@ -344,6 +344,7 @@ AND farm.grain >= 1
     await db.execute(grain_6, vitamin_param)
     await db.execute(grain_7, vitamin_param)
     await db.commit()
+    print(1)
 
 
 if __name__ == '__main__':
