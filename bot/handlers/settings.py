@@ -31,7 +31,10 @@ async def edit_setings(call: types.CallbackQuery, state: FSMContext):
 async def new_value(msg: types.Message, state: FSMContext):
     async with state.proxy() as data:
         pass
-    msg.text = int(msg.text)
+    try:
+        msg.text = int(msg.text)
+    except ValueError:
+        pass
     await edit(key=data['key'], value=msg.text)
     await state.finish()
     await msg.answer(text=f"<b>✅ Malumot o'zgartirildi</b>", parse_mode="HTML",
