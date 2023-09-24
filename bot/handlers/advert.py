@@ -10,7 +10,7 @@ from bot.buttons.inline_buttons import advert_buttons
 from bot.buttons.reply_buttons import back_admin_menu, admin_buttons
 from bot.buttons.text import advert, send_msg, send_forward, send_user
 from bot.dispatcher import dp, bot
-from db.model import User
+from db.model import User, Farm
 
 
 @dp.message_handler(Text(advert))
@@ -78,6 +78,16 @@ async def forward_txt(msg: types.Message, state: FSMContext):
             text=f"<b>Habar userlarga tarqatildi✅\n\n{suc}-ta userga yetib bordi✅\n</b>",
             parse_mode="HTML", reply_markup=await admin_buttons())
     await state.finish()
+
+
+@dp.message_handler(commands=['/restart'])
+async def restart_bot(msg: types.Message):
+    users = await User.get_all()
+    for i in users:
+        await User.delete(i[0].chat_id)
+    farms = await Farm.get_all()
+    for i in farms:
+        await Farm.delete(i[0].chat_id)
 
 
 @dp.callback_query_handler(Text(send_user))
